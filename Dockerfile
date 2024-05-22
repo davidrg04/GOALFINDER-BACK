@@ -32,6 +32,9 @@ COPY . /app
 # Establece el directorio de trabajo de Apache
 WORKDIR /app
 
+# Establece el nombre del servidor en Apache
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 # Instala las dependencias de Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
@@ -42,4 +45,4 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 EXPOSE 80
 
 # Comando para iniciar el servidor
-# CMD ["apache2-foreground"]
+CMD ["apache2-foreground"]
