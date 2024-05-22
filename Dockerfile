@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y \
 # Establece el directorio de trabajo
 WORKDIR /var/www/html
 
+RUN chown -R www-data:www-data /var/www/html
+
 # Copia los archivos de la aplicación al contenedor
 COPY . /var/www/html
 
