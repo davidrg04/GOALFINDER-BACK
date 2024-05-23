@@ -4,7 +4,8 @@ FROM php:8.0-cli
 RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
     pkg-config \
-    libssl-dev
+    libssl-dev \
+    && docker-php-ext-install openssl
 
 # Configurar el directorio de trabajo
 WORKDIR /app
