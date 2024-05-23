@@ -1,9 +1,9 @@
 [phases.setup]
 nixpkgs = [
-  "php74.withExtensions (pe: [ pe.mysqli pe.pdo_mysql pe.mongodb ])",
+  "php82.withExtensions (pe: [ pe.mysqli pe.pdo_mysql pe.mongodb ])",
   "nginx",
   "libmysqlclient",
-  "php74Packages.composer",
+  "php82Packages.composer",
   "nodejs_18",
   "npm-9_x"
 ]
