@@ -26,4 +26,6 @@ WORKDIR /app
 # Instalar dependencias de Composer
 RUN composer install
 
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+# Servir el contenido de la carpeta API
+CMD ["php", "-S", "0.0.0.0:8000", "-t", "API"]
+
