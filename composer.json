@@ -2,10 +2,5 @@
     "require": {
         "firebase/php-jwt": "^6.10",
         "mongodb/mongodb": "^1.17"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "bash install-mongodb.sh"
-        ]
     }
 }
