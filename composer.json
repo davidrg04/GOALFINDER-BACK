@@ -5,7 +5,7 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "bash install-mongo.sh"
+            "bash install-mongodb.sh"
         ]
     }
 }
