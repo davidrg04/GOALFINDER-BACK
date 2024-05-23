@@ -9,17 +9,17 @@ RUN apt-get update && apt-get install -y \
 # Configurar el directorio de trabajo
 WORKDIR /app
 
-# Copiar los archivos del proyecto al contenedor
-COPY . /app
-
 # Copiar el script de instalación
-COPY install-mongodb.sh /usr/local/bin/install-mongodb.sh
+COPY install_mongodb.sh /usr/local/bin/install-mongodb.sh
 
 # Dar permisos de ejecución al script
 RUN chmod +x /usr/local/bin/install-mongodb.sh
 
 # Instalar la extensión de MongoDB
 RUN /usr/local/bin/install-mongodb.sh
+
+# Copiar los archivos del proyecto al contenedor
+COPY . /app
 
 # Instalar las dependencias de Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
