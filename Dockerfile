@@ -11,9 +11,12 @@ RUN apt-get update && \
     libxml2-dev \
     libzip-dev \
     unzip \
-    git \
-    && pecl install mongodb \
-    && docker-php-ext-enable mongodb
+    git
+
+# Actualizar el canal PECL y luego instalar la extensión MongoDB
+RUN pecl channel-update pecl.php.net && \
+    pecl install mongodb && \
+    docker-php-ext-enable mongodb
 
 # Añadir ServerName en la configuración de Apache para suprimir la advertencia
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
