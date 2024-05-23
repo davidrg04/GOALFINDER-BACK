@@ -7,7 +7,7 @@ apt-get update && apt-get install -y software-properties-common lsb-release ca-c
 add-apt-repository ppa:ondrej/php -y
 
 # Actualizar el paquete e instalar las dependencias necesarias, incluyendo openssl y librerías de desarrollo
-apt-get update && apt-get install -y php-pear php8.2-dev php8.2-openssl build-essential
+apt-get update && apt-get install -y php-pear php8.2 php8.2-cli php8.2-fpm php8.2-dev build-essential
 
 # Instalar la extensión de MongoDB desde los repositorios de Ubuntu
 apt-get install -y php-mongodb
