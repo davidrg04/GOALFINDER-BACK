@@ -11,10 +11,13 @@ nixpkgs = [
 [phases.build]
 commands = [
   "composer install --ignore-platform-reqs",
-  "mkdir -p /var/log/nginx && mkdir -p /var/cache/nginx"
+  "mkdir -p /var/log/nginx /var/cache/nginx",
+  "touch /var/log/nginx/error.log /var/log/nginx/access.log",
+  "chmod -R 755 /var/log/nginx"
 ]
 
 [phases.start]
 commands = [
   "php-fpm -y /etc/php/8.2/fpm/php-fpm.conf & nginx -g 'daemon off;'"
 ]
+
