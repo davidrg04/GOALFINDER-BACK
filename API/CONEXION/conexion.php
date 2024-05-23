@@ -10,7 +10,7 @@ class Conexion {
     public function __construct() {
         try {
             
-            $this->client = new MongoClient("mongodb+srv://davidrg:memoriatfg@goalfinder.86b73rt.mongodb.net/?retryWrites=true&w=majority&tls=true&tlsAllowInvalidCertificates=true");
+            $this->client = new MongoClient("mongodb+srv://davidrg:memoriatfg@goalfinder.86b73rt.mongodb.net/?retryWrites=true&w=majority");
             $this->db = $this->client->goalfinder;
         } catch (Exception $e) {
             error_log($e->getMessage()); 
