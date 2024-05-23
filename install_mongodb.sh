@@ -1,24 +1,22 @@
 #!/bin/bash
 
 # Instalar software-properties-common para poder usar add-apt-repository
-apt-get update && apt-get install -y software-properties-common
+apt-get update && apt-get install -y software-properties-common lsb-release ca-certificates apt-transport-https
 
 # Añadir el repositorio para PHP 8.2
 add-apt-repository ppa:ondrej/php -y
 
-# Actualizar el paquete e instalar las dependencias necesarias, incluyendo openssl
-apt-get update && apt-get install -y php-pear php8.2-dev php8.2-openssl
+# Actualizar el paquete e instalar las dependencias necesarias, incluyendo openssl y librerías de desarrollo
+apt-get update && apt-get install -y php-pear php8.2-dev php8.2-openssl build-essential
 
-# Habilitar openssl en PHP
-docker-php-ext-enable openssl
+# Instalar la extensión de MongoDB desde los repositorios de Ubuntu
+apt-get install -y php-mongodb
 
-# Actualizar el canal pecl
-pecl channel-update pecl.php.net
-
-# Instalar la extensión de MongoDB
-pecl install mongodb && echo "extension=mongodb.so" > /etc/php/8.2/cli/conf.d/20-mongodb.ini
+# Asegurarse de que la extensión MongoDB esté habilitada
+echo "extension=mongodb.so" > /etc/php/8.2/cli/conf.d/20-mongodb.ini
 
 # Instalar las dependencias de Composer
 composer install --ignore-platform-reqs
+
 
 
