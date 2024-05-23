@@ -19,7 +19,7 @@ RUN pecl channel-update pecl.php.net && \
     docker-php-ext-enable mongodb
 
 # Añadir la extensión de MongoDB a php.ini
-RUN echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongodb.ini
+RUN echo 'extension=mongodb.so' >> $(php -r 'echo php_ini_loaded_file();')
 
 # Añadir ServerName en la configuración de Apache para suprimir la advertencia
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
