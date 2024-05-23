@@ -15,6 +15,9 @@ RUN apt-get update && \
     && pecl install mongodb \
     && docker-php-ext-enable mongodb
 
+# Añadir ServerName en la configuración de Apache para suprimir la advertencia
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 # Copiar los archivos de la aplicación al directorio del servidor
 COPY . /var/www/html
 
