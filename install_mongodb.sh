@@ -12,9 +12,6 @@ apt-get update && apt-get install -y php-pear php8.2-dev php8.2-openssl build-es
 # Instalar la extensión de MongoDB desde los repositorios de Ubuntu
 apt-get install -y php-mongodb
 
-# Asegurarse de que la extensión MongoDB esté habilitada
-echo "extension=mongodb.so" > /etc/php/8.2/cli/conf.d/20-mongodb.ini
-
 # Instalar las dependencias de Composer
 composer install --ignore-platform-reqs
 
