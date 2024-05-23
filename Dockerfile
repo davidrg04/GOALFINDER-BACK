@@ -1,11 +1,13 @@
 FROM php:8.0-cli
 
-# Instalar las dependencias necesarias
+# Actualizar los paquetes del sistema y habilitar extensiones
 RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
     pkg-config \
-    libssl-dev \
-    && docker-php-ext-install openssl
+    libssl-dev
+
+# Instalar y habilitar la extensión openssl
+RUN docker-php-ext-install openssl
 
 # Configurar el directorio de trabajo
 WORKDIR /app
