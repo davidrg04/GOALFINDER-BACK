@@ -15,8 +15,7 @@ RUN apt-get update && \
 
 # Actualizar el canal PECL y luego instalar la extensión MongoDB
 RUN pecl channel-update pecl.php.net && \
-    pecl install mongodb && \
-    docker-php-ext-enable mongodb
+    pecl install mongodb
 
 # Copiar el archivo php.ini de desarrollo al contenedor y añadir la extensión de MongoDB
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini && \
@@ -24,9 +23,6 @@ RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini && \
 
 # Asegurarse de que no hay duplicados de la extensión mongodb en conf.d
 RUN rm -f /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
-
-# Añadir ServerName en la configuración de Apache para suprimir la advertencia
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Copiar los archivos de la aplicación al directorio del servidor
 COPY . /var/www/html
