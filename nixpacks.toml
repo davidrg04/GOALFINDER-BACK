@@ -3,7 +3,11 @@ apt_dependencies = ["libpng-dev", "libjpeg-dev", "libfreetype6-dev", "libonig-de
 
 [phases.build]
 commands = [
-  "composer install",
   "pecl channel-update pecl.php.net",
-  "echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/mongodb.ini"
+  "pecl install mongodb",
+  "echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/mongodb.ini",
+  "composer install"
 ]
+
+[phases.start]
+commands = ["php -S 0.0.0.0:80 -t /app"]
