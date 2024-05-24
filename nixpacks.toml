@@ -1,13 +1,10 @@
 [phases.setup]
-apt_dependencies = ["php-pear", "php-dev", "libpng-dev", "libjpeg-dev", "libfreetype6-dev", "libonig-dev", "libxml2-dev", "libzip-dev", "unzip", "git"]
+apt_dependencies = ["software-properties-common", "php-pear", "php-dev", "libpng-dev", "libjpeg-dev", "libfreetype6-dev", "libonig-dev", "libxml2-dev", "libzip-dev", "unzip", "git"]
 
 [phases.build]
 commands = [
-  "pecl channel-update pecl.php.net",
-  "yes '' | pecl install mongodb",
-  "echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/mongodb.ini",
+  "sudo add-apt-repository ppa:ondrej/php",
+  "sudo apt-get update",
+  "sudo apt-get install -y php-mongodb",
   "composer install --ignore-platform-reqs"
 ]
-
-[phases.start]
-commands = ["php -S 0.0.0.0:80 -t /app"]
