@@ -7,6 +7,3 @@ commands = [
   "pecl install mongodb",
   "echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/mongodb.ini"
 ]
-
-[phases.start]
-commands = ["php-fpm"]
