@@ -1,0 +1,12 @@
+[phases.setup]
+apt_dependencies = ["libpng-dev", "libjpeg-dev", "libfreetype6-dev", "libonig-dev", "libxml2-dev", "libzip-dev", "unzip", "git"]
+
+[phases.build]
+commands = [
+  "pecl channel-update pecl.php.net",
+  "pecl install mongodb",
+  "echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/mongodb.ini"
+]
+
+[phases.start]
+commands = ["apache2-foreground"]
