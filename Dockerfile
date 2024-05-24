@@ -22,6 +22,9 @@ RUN pecl channel-update pecl.php.net && \
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini && \
     echo "extension=mongodb.so" >> /usr/local/etc/php/php.ini
 
+# Asegurarse de que no hay duplicados de la extensión mongodb en conf.d
+RUN rm -f /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
+
 # Añadir ServerName en la configuración de Apache para suprimir la advertencia
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
