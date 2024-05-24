@@ -1,5 +1,5 @@
 [phases.setup]
-apt_dependencies = ["libpng-dev", "libjpeg-dev", "libfreetype6-dev", "libonig-dev", "libxml2-dev", "libzip-dev", "unzip", "git"]
+apt_dependencies = ["libpng-dev", "libjpeg-dev", "libfreetype6-dev", "libonig-dev", "libxml2-dev", "libzip-dev", "unzip", "git", "apache2"]
 
 [phases.build]
 commands = [
@@ -9,4 +9,4 @@ commands = [
 ]
 
 [phases.start]
-commands = ["apache2-foreground"]
+commands = ["apachectl -D FOREGROUND"]
